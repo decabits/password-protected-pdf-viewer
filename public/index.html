@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+
+</style>
+</head>
+<body>
+  <div id="pdf-viewer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/web/pdf_viewer.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const uri = urlParams.get('uri');
+  const password = urlParams.get('password');
+  
+  var loadingTask = pdfjsLib.getDocument({url: uri, password: password});
+  loadingTask.promise.then(
+    function(pdf) {
+      // Load information from the first page.
+      const num = 1;
+  
+      function renderPage(num) {
+        pdf.getPage(num).then(function(page) {
+          var scale = 2.5;
+          var viewport = page.getViewport(scale);
+  
+          // Apply page dimensions to the <canvas> element.
+          var canvasId = 'pdf-viewer-' + num;
+          $('#pdf-viewer').append($('<canvas/>', {'id': canvasId}));
+          var canvas = document.getElementById(canvasId);
+          var context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+  
+          // Render the page into the <canvas> element.
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          
+          page.render(renderContext).then(function() {
+            console.log("Page rendered!");
+          });
+        });
+      }
+  
+      for (let i = 1; i < pdf.numPages; i ++) {
+        renderPage(i);
+      }
+    },
+    function(reason) {
+      console.error(reason);
+    }
+  );
+</script>
+</html>
