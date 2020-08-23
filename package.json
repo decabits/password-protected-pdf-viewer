@@ -11,6 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/decabits/password-protected-pdf-viewer.git"
   },
+  "keywords": [
+    "pdf",
+    "open pdf",
+    "password protected pdf viewer",
+    "password protected pdf open in react"
+  ],
   "author": "Ayush",
   "license": "ISC",
   "bugs": {
