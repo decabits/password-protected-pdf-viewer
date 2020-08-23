@@ -1,16 +1,36 @@
 {
-  "name": "pdf",
+  "name": "password-protected-pdf-viewer",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "build": "./node_modules/.bin/babel src --out-file index.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decabits/password-protected-pdf-viewer.git"
+  },
+  "author": "Ayush",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/decabits/password-protected-pdf-viewer/issues"
+  },
+  "homepage": "https://github.com/decabits/password-protected-pdf-viewer#readme",
+  "peerDependencies": {
+    "react": "^16.6.1",
+    "react-dom": "^16.6.3",
+    "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "react-helmet": "^6.1.0"
   }
 }
