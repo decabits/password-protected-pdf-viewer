@@ -11,7 +11,9 @@
 `
 
 # Props
-
 `uri`
 `password`
 `scale`
+
+# Warning
+`Ensure that the corse are allowed of your PDF URI.`
