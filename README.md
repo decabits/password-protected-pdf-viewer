@@ -16,4 +16,4 @@
 `scale`
 
 # Warning
-`Ensure that the corse are allowed of your PDF URI.`
+`Ensure that the cors are allowed of your PDF URI.`
